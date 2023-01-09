@@ -48,6 +48,11 @@ public class ClienteController {
         return clienteService.findClienteBySucursalesid(clienteid);
     }
 
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT, produces = "application/json")
+    public Cliente edit(@PathVariable Integer id, @RequestBody Cliente entity) {
+        return clienteService.save(entity);
+    }
+
 
 
 
