@@ -38,8 +38,8 @@ public class ClienteServiceImpl  implements  ClienteService{
     }
 
     @Override
-    public void save(Cliente cliente) {
-        clienteRepository.save(cliente);
+    public Cliente save(Cliente cliente) {
+        return clienteRepository.save(cliente);
     }
 
     @Override
@@ -60,6 +60,12 @@ public class ClienteServiceImpl  implements  ClienteService{
     @Override
     public void saveFactura(Factura factura) {
         facturaRepository.save(factura);
+    }
+
+
+    @Override
+    public Cliente findClienteByid(Long id) {
+        return clienteRepository.findById(id).orElse(null);
     }
 
     @Override

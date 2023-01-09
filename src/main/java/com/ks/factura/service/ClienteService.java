@@ -15,7 +15,7 @@ public interface ClienteService {
 
     public Page<Cliente> findAll(Pageable pageable);
 
-    void save(Cliente cliente);
+    Cliente save(Cliente cliente);
 
     public Optional<Cliente> findOne(Long id);
 
@@ -34,4 +34,6 @@ public interface ClienteService {
     public Factura fetchByIdWithItemFacturaWithProducto(Long id);
 
     public Cliente fetchByIdWithFacturas(Long id);
+
+    public Cliente findClienteByid(Long id);
 }

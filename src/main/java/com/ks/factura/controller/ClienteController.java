@@ -1,11 +1,47 @@
 package com.ks.factura.controller;
 
+import com.ks.factura.entity.Cliente;
+import com.ks.factura.service.ClienteService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
+@RestController
 @Controller
-@RequestMapping(name = "/factura")
+@RequestMapping("/cliente")
 public class ClienteController {
+
+    @Autowired
+    private ClienteService clienteService;
+    @GetMapping
+    public ResponseEntity<?> getAllCliente()
+    {
+        return new ResponseEntity<>(clienteService.findAll(), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> saveProvincia(@RequestBody Cliente cliente){
+        return new ResponseEntity<>(clienteService.save(cliente),
+                HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("{clienteId}")
+    public ResponseEntity<?> deleteProvincia(@PathVariable Long clienteId){
+        clienteService.delete(clienteId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    @GetMapping("/{clienteid}")
+    public Cliente findByProvinciaId(@PathVariable("clienteid") Long clienteid) {
+        return clienteService.findClienteByid(clienteid);
+    }
+
+
 
 
 
