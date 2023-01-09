@@ -3,6 +3,7 @@ package com.ks.factura.service;
 import com.ks.factura.entity.Cliente;
 import com.ks.factura.entity.Factura;
 import com.ks.factura.entity.Producto;
+import com.ks.factura.entity.Sucursal;
 import com.ks.factura.repository.ClienteRepository;
 import com.ks.factura.repository.FacturaRepository;
 import com.ks.factura.repository.ProductoRepository;
@@ -68,6 +69,12 @@ public class ClienteServiceImpl  implements  ClienteService{
         return clienteRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public List<Sucursal> findClienteBySucursalesid(Long id) {
+        Optional<Cliente> client= clienteRepository.findById(id);
+
+        return client.get().getSucursales();
+    }
     @Override
     public Producto findProductoByid(Long id) {
         return productoRepository.findById(id).orElse(null);

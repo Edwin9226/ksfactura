@@ -3,6 +3,7 @@ package com.ks.factura.service;
 import com.ks.factura.entity.Cliente;
 import com.ks.factura.entity.Factura;
 import com.ks.factura.entity.Producto;
+import com.ks.factura.entity.Sucursal;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -36,4 +37,6 @@ public interface ClienteService {
     public Cliente fetchByIdWithFacturas(Long id);
 
     public Cliente findClienteByid(Long id);
+
+    public List<Sucursal> findClienteBySucursalesid(Long id);
 }
